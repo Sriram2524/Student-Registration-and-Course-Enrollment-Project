@@ -1,0 +1,38 @@
+
+{
+  "name": "student-registration-course-enrollment-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "proxy": "http://localhost:8081",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "set \"NODE_OPTIONS=--max-old-space-size=4096\" && react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/react": "^15.0.7",
+    "@testing-library/user-event": "^14.5.2",
+    "axios": "^1.7.2",
+    "bootstrap": "^5.3.3",
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.23.1",
+    "react-scripts": "5.0.1"
+  },
+  "devDependencies": {},
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
