@@ -1,7 +1,21 @@
 import axios from 'axios';
 
+const PRODUCTION_API_BASE_URL = 'https://students-portal-backend-6ynh.onrender.com';
+
+const getApiBaseUrl = () => {
+  if (process.env.REACT_APP_API_BASE_URL) {
+    return process.env.REACT_APP_API_BASE_URL;
+  }
+
+  if (typeof window !== 'undefined' && window.location.hostname.endsWith('vercel.app')) {
+    return PRODUCTION_API_BASE_URL;
+  }
+
+  return '';
+};
+
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL || '',
+  baseURL: getApiBaseUrl(),
   headers: {
     'Content-Type': 'application/json'
   },
