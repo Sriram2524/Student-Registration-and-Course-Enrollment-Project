@@ -32,7 +32,7 @@ public class ApiCorsFilter extends OncePerRequestFilter {
             FilterChain filterChain
     ) throws ServletException, IOException {
         String origin = request.getHeader(HttpHeaders.ORIGIN);
-        if (origin != null && allowedOrigins.contains(origin)) {
+        if (isAllowedOrigin(origin)) {
             response.setHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, origin);
         }
         response.setHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, "GET,POST,OPTIONS");
@@ -45,5 +45,11 @@ public class ApiCorsFilter extends OncePerRequestFilter {
         }
 
         filterChain.doFilter(request, response);
+    }
+
+    private boolean isAllowedOrigin(String origin) {
+        return origin != null
+                && (allowedOrigins.contains(origin)
+                || (origin.startsWith("https://") && origin.endsWith(".vercel.app")));
     }
 }

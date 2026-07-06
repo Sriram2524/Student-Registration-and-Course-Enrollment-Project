@@ -18,8 +18,14 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")
-                .allowedOrigins(allowedOrigins.toArray(String[]::new))
+                .allowedOriginPatterns(getAllowedOriginPatterns())
                 .allowedMethods("GET", "POST", "OPTIONS")
                 .allowedHeaders("*");
+    }
+
+    private String[] getAllowedOriginPatterns() {
+        List<String> patterns = new java.util.ArrayList<>(allowedOrigins);
+        patterns.add("https://*.vercel.app");
+        return patterns.toArray(String[]::new);
     }
 }
