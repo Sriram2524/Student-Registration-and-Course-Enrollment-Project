@@ -58,7 +58,7 @@ public class ApiRoutes extends RouteBuilder {
         restConfiguration()
                 .component("servlet")
                 .bindingMode(RestBindingMode.json)
-                .dataFormatProperty("prettyPrint", "true")
+                .dataFormatProperty("prettyPrint", "true");
 
         rest("/")
                 .post("/students")
